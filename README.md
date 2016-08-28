@@ -18,7 +18,7 @@ rest api with hug
 
 #### local style
 
-0. pyenv virtualenv 3.5.2 <project_name>
+0. `pyenv virtualenv 3.5.2 <project_name>`
 1. pip install -r requirement
 2. cd `your project`
 3. cp .env.example .env
