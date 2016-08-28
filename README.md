@@ -1,4 +1,4 @@
-Bigdata
+rest api with hug
 -------
 
 ## some dependencies
@@ -28,5 +28,8 @@ go with `http://localhost:8000/open/hello?name=programmer`
 
 #### docker style
 
+1. git clone https://github.com/koolay/hug-demo.git <your workspace>
+2. git clone https://github.com/koolay/docker-passenger-python-hug.git <your workspace>
+3. follow `docker-passenger-python-hug` 
 
 ### 1.production
