@@ -30,9 +30,4 @@ class HttpError(falcon.HTTPError):
 class InvalidArgumentError(UserError): pass # 无效参数异常
 
 
-class ServerError(HttpError):
-    """
-    程序逻辑或意外未捕获的未知异常
-    """
-    def __init__(self):
-        super(ServerError, self).__init__(500, falcon.HTTP_500)
+class ServerError(Error): pass
