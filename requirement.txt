@@ -1,6 +1,6 @@
 requests
 python-dotenv
 hug
+mysqlclient
 raven
 gunicorn
-
