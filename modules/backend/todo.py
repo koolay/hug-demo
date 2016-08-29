@@ -7,7 +7,7 @@ import hug
 from services.todo_service import get_username
 
 
-@hug.get('/hello')
+@hug.get('/backend/hello')
 def hello(name:hug.types.text):
 
     name = get_username(name)

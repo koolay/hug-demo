@@ -29,13 +29,14 @@ from collections import namedtuple
 
 logger = logging.getLogger(__name__)
 
+
 def get_db():
     """
 
     :return SimpleMysql:
     """
     return SimpleMysql(host=os.environ.get('DB_MASTER_HOST'),
-                       port= int(os.environ.get('DB_MASTER_PORT')),
+                       port=int(os.environ.get('DB_MASTER_PORT')),
                        db=os.environ.get('DB_MASTER_DBNAME'),
                        user=os.environ.get('DB_MASTER_UID'),
                        passwd=os.environ.get('DB_MASTER_PWD')
@@ -54,6 +55,7 @@ class SimpleMysql:
         self.conf["host"] = kwargs.get("host", "localhost")
         self.conf["port"] = kwargs.get("port", 3306)
         self.conf["autocommit"] = kwargs.get("autocommit", False)
+        self.conf["connect_timeout"] = kwargs.get('connect_timeout', 3)
         logger.debug(self.conf)
         self.connect()
 
@@ -61,10 +63,14 @@ class SimpleMysql:
         """Connect to the mysql server"""
 
         try:
-            self.conn = MySQLdb.connect(db=self.conf['db'], host=self.conf['host'],
-                                        port=self.conf['port'], user=self.conf['user'],
+            self.conn = MySQLdb.connect(db=self.conf['db'],
+                                        host=self.conf['host'],
+                                        port=self.conf['port'],
+                                        user=self.conf['user'],
                                         passwd=self.conf['passwd'],
-                                        charset=self.conf['charset'])
+                                        charset=self.conf['charset'],
+                                        connect_timeout=self.conf['connect_timeout']
+                                        )
             self.cur = self.conn.cursor()
             self.conn.autocommit(self.conf["autocommit"])
         except:
